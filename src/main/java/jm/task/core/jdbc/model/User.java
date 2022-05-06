@@ -10,7 +10,7 @@ public class User {
     private Long id;
 
     @Column
-    private String name;
+    private String firstName;
 
     @Column
     private String lastName;
@@ -23,7 +23,7 @@ public class User {
     }
 
     public User(String name, String lastName, Byte age) {
-        this.name = name;
+        this.firstName = name;
         this.lastName = lastName;
         this.age = age;
     }
@@ -37,11 +37,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return firstName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.firstName = name;
     }
 
     public String getLastName() {
@@ -58,5 +58,10 @@ public class User {
 
     public void setAge(Byte age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return id + ") " + firstName + " " + lastName + ". Возраст: " + age;
     }
 }
