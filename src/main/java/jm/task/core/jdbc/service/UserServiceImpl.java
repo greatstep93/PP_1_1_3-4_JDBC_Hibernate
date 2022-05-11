@@ -13,37 +13,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    UserDao ud = new UserDaoJDBCImpl();
+
     public void createUsersTable() throws SQLException, ClassNotFoundException {
-        UserDao ud = new UserDaoJDBCImpl();
         ud.createUsersTable();
     }
 
     public void dropUsersTable() throws ClassNotFoundException {
-        UserDao ud = new UserDaoJDBCImpl();
         ud.dropUsersTable();
-
     }
 
     public void saveUser(String firstName, String lastName, byte age) throws SQLException, ClassNotFoundException {
-
-        UserDao ud = new UserDaoJDBCImpl();
         ud.saveUser(firstName, lastName, age);
     }
 
     public void removeUserById(long id) throws SQLException, ClassNotFoundException {
-        UserDao ud = new UserDaoJDBCImpl();
         ud.removeUserById(id);
     }
 
     public List<User> getAllUsers() throws SQLException, ClassNotFoundException {
-
-        UserDao ud = new UserDaoJDBCImpl();
         return ud.getAllUsers();
-
     }
 
     public void cleanUsersTable() throws SQLException, ClassNotFoundException {
-        UserDao ud = new UserDaoJDBCImpl();
         ud.cleanUsersTable();
     }
 }
