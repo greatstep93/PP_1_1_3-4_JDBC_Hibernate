@@ -6,6 +6,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/model/User.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/util/Util.java" charset="UTF-8" />
-    <file url="PROJECT" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

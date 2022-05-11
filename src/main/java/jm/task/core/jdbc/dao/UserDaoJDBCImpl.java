@@ -13,20 +13,22 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void createUsersTable() {
-        try (Connection connection = Util.getMySQLConnection()) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = Util.getMySQLConnection(); Statement statement = connection.createStatement()) {
+
             statement.execute("CREATE TABLE IF NOT EXISTS users (id INT NOT NULL AUTO_INCREMENT," +
                     "firstName VARCHAR(255),lastName VARCHAR(255), age INT, PRIMARY KEY (id))");
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка подключения");
         }
     }
 
     public void dropUsersTable() {
-        try (Connection connection = Util.getMySQLConnection()) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = Util.getMySQLConnection(); Statement statement = connection.createStatement()) {
+
             String execute = "DROP TABLE users";
             statement.execute(execute);
+
         } catch (SQLException ignore) {
 
         } catch (ClassNotFoundException e) {
@@ -35,36 +37,36 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String firstName, String lastName, byte age) {
-        try (Connection connection = Util.getMySQLConnection()) {
-            String execute = "INSERT INTO users(firstName,lastName,age) VALUES (?,?,?);";
-            PreparedStatement pS = connection.prepareStatement(execute);
+        try (Connection connection = Util.getMySQLConnection();
+             PreparedStatement pS = connection.prepareStatement("INSERT INTO users(firstName,lastName,age) VALUES (?,?,?);")) {
+
             pS.setString(1, firstName);
             pS.setString(2, lastName);
             pS.setInt(3, age);
             pS.executeUpdate();
             System.out.println("User с именем - " + firstName + " добавлен в базу данных");
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка подключения");
         }
     }
 
     public void removeUserById(long id) {
-        try (Connection connection = Util.getMySQLConnection()) {
-            String execute = "DELETE FROM users WHERE id = ?;";
-            PreparedStatement pS = connection.prepareStatement(execute);
+        try (Connection connection = Util.getMySQLConnection();
+             PreparedStatement pS = connection.prepareStatement("DELETE FROM users WHERE id = ?;")) {
+
             pS.setLong(1, id);
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка подключения");
         }
     }
 
     public List<User> getAllUsers() {
-
         List<User> userList = new ArrayList<>();
-        try (Connection connection = Util.getMySQLConnection()) {
-            Statement statement = connection.createStatement();
-            String execute = "SELECT * FROM users";
-            ResultSet rs = statement.executeQuery(execute);
+        try (Connection connection = Util.getMySQLConnection(); Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery("SELECT * FROM users;")) {
+
             for (int i = 0; rs.next(); i++) {
                 long id = rs.getInt(1);
                 String firstName = rs.getString(2);
@@ -73,6 +75,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.add(new User(firstName, lastName, age));
                 userList.get(i).setId(id);
             }
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка подключения");
         }
@@ -80,10 +83,10 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-        try (Connection connection = Util.getMySQLConnection()) {
-            Statement statement = connection.createStatement();
-            String execute = "DELETE FROM users";
-            statement.execute(execute);
+        try (Connection connection = Util.getMySQLConnection(); Statement statement = connection.createStatement()) {
+
+            statement.execute("DELETE FROM users;");
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка подключения");
         }
