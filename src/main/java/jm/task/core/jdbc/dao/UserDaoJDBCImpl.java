@@ -18,7 +18,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.execute("CREATE TABLE IF NOT EXISTS users (id INT NOT NULL AUTO_INCREMENT," +
                     "firstName VARCHAR(255),lastName VARCHAR(255), age INT, PRIMARY KEY (id))");
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ");
         }
     }
 
@@ -42,9 +42,9 @@ public class UserDaoJDBCImpl implements UserDao {
             pS.setString(2, lastName);
             pS.setInt(3, age);
             pS.executeUpdate();
-            System.out.println("User с именем - " + firstName + " добавлен в базу данных");
+            System.out.println("User СЃ РёРјРµРЅРµРј - " + firstName + " РґРѕР±Р°РІР»РµРЅ РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…");
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ");
         }
     }
 
@@ -54,7 +54,7 @@ public class UserDaoJDBCImpl implements UserDao {
             PreparedStatement pS = connection.prepareStatement(execute);
             pS.setLong(1, id);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ");
         }
     }
 
@@ -74,7 +74,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.get(i).setId(id);
             }
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ");
         }
         return userList;
     }
@@ -85,7 +85,7 @@ public class UserDaoJDBCImpl implements UserDao {
             String execute = "DELETE FROM users";
             statement.execute(execute);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ");
         }
     }
 }

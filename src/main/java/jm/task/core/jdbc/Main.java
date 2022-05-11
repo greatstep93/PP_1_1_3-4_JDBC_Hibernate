@@ -11,10 +11,10 @@ public class Main {
 
         userService.createUsersTable();
 
-        userService.saveUser("Дмитрий", "Ткаченко", (byte) 29);
-        userService.saveUser("Анна", "Тришкина", (byte) 29);
-        userService.saveUser("Михаил", "Баранов", (byte) 29);
-        userService.saveUser("Андрей", "Богданов", (byte) 34);
+        userService.saveUser("Р”РјРёС‚СЂРёР№", "РўРєР°С‡РµРЅРєРѕ", (byte) 29);
+        userService.saveUser("РђРЅРЅР°", "РўСЂРёС€РєРёРЅР°", (byte) 29);
+        userService.saveUser("РњРёС…Р°РёР»", "Р‘Р°СЂР°РЅРѕРІ", (byte) 29);
+        userService.saveUser("РђРЅРґСЂРµР№", "Р‘РѕРіРґР°РЅРѕРІ", (byte) 34);
 
         System.out.println(userService.getAllUsers().toString()
                 .replaceAll("^\\[|]$", "")
