@@ -19,7 +19,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     "firstName VARCHAR(255),lastName VARCHAR(255), age INT, PRIMARY KEY (id))");
 
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("Ошибка при создании таблицы");
         }
     }
 
@@ -47,7 +47,7 @@ public class UserDaoJDBCImpl implements UserDao {
             System.out.println("User с именем - " + firstName + " добавлен в базу данных");
 
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("Ошибка при сохранении пользователя");
         }
     }
 
@@ -58,7 +58,7 @@ public class UserDaoJDBCImpl implements UserDao {
             pS.setLong(1, id);
 
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("Ошибка при удалении пользователя по id");
         }
     }
 
@@ -77,7 +77,7 @@ public class UserDaoJDBCImpl implements UserDao {
             }
 
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("Ошибка при получении списка пользователей");
         }
         return userList;
     }
@@ -88,7 +88,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.execute("DELETE FROM users;");
 
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Ошибка подключения");
+            System.out.println("Ошибка при очистке таблицы");
         }
     }
 }
